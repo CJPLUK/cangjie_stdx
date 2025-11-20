@@ -9,6 +9,7 @@
 package stdx.effect
 
 internal import std.sync.AtomicBool
+internal import std.collection.ArrayList
 
 private type ThreadHandle = CPointer<Unit>
 
