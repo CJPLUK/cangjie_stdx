@@ -64,8 +64,8 @@ abstract class HandlerFrame {
         }
     }
 
-    public func setImmediateHandler<Cmd, Res, Ret>(h: (Cmd) -> ImmediateHandlerReturn<Res>): Unit {
-        this.addHandlerCase(ImmediateHandlerCase<Cmd, Res, Ret>(this, h))
+    public func setImmediateHandler<Cmd, Res>(h: (Cmd) -> ImmediateHandlerReturn<Res>): Unit {
+        this.addHandlerCase(ImmediateHandlerCase<Cmd, Res>(this, h))
     }
 
     public static func perf<Cmd, Res>(cmd: Cmd): Res where Cmd <: Command<Res> {

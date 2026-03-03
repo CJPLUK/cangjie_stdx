@@ -31,7 +31,7 @@ class ImmediateEarlyReturn <: ImmediateEffectHandlerEarlyExit {
     ImmediateEarlyReturn(let frame: Option<HandlerFrame>, let result: Any) {}
 }
 
-class ImmediateHandlerCase<Cmd, Res, Ret> <: HandlerCase {
+class ImmediateHandlerCase<Cmd, Res> <: HandlerCase {
     ImmediateHandlerCase(let frame: HandlerFrame, let h: (Cmd) -> ImmediateHandlerReturn<Res>) {}
     protected override func tryHandle<R1>(maybeCmd: Command<R1>, box!: FrameBox): Option<R1> {
         match (maybeCmd as Cmd) {
