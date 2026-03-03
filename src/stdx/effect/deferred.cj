@@ -126,7 +126,7 @@ internal class DeferredFrame<Ret> <: HandlerFrame {
     var handleeThread = ThreadHandle()
     var handlerRequest: HandlerRequest<Ret> = Invalid
 
-    public DeferredFrame(let fn: () -> Ret) {}
+    public DeferredFrame(let fn: () -> HandlerRequest<Ret>) {}
     public func start(): Ret {
         // EXECUTED BY HANDLER
         this.parent = HandlerFrame.getActiveFrame()
@@ -135,7 +135,7 @@ internal class DeferredFrame<Ret> <: HandlerFrame {
             this.handleeThread = unsafe { CJ_MRT_GetCurrentCJThread() }
             HandlerFrame.setActiveFrame(this)
             try {
-                this.request(HandlerRequest<Ret>.Return(fn()))
+                this.request(fn())
             } catch (exn: Exception) {
                 this.request(Throw(exn))
             } catch (err: Error) {
