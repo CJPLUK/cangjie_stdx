@@ -16,10 +16,8 @@ private type ThreadHandle = CPointer<Unit>
 @FastNative
 foreign func CJ_MRT_GetCurrentCJThread(): ThreadHandle
 
-@FastNative
 foreign func CJ_MRT_ThreadWait(): Unit
 
-@FastNative
 foreign func CJ_MRT_ThreadResumeAndWait(readyThread: ThreadHandle): Unit
 
 @FastNative
